@@ -49,7 +49,7 @@ app.post('/convert', async (req, res) => {
         });
 
         res.send(finalAudio);
-        console.log("Success! Audio sent.");
+        
 
     } catch (error) {
         console.error("Error generating audio:", error);
