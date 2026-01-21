@@ -6,9 +6,13 @@ const googleTTS = require('google-tts-api');
 const app = express();
 const PORT = process.env.PORT || 3000; // Render sets the port automatically
 
-// 1. MIDDLEWARE (The Security Guard)
-app.use(cors()); // Allow your React app to talk to this server
-app.use(bodyParser.json({ limit: '10mb' })); // Allow large text files (up to 10MB)
+
+app.use(cors({
+    origin: '*',           // Allow ANY website (Vercel, Mobile, Localhost)
+    methods: ['GET', 'POST'], // Allow reading and writing
+    allowedHeaders: ['Content-Type']
+})); 
+app.use(bodyParser.json({ limit: '10mb' })); 
 
 // 2. THE ROUTE (The "Order Window")
 app.post('/convert', async (req, res) => {
